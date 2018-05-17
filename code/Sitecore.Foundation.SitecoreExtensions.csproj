@@ -41,7 +41,7 @@
     <Compile Include="Extensions\FieldExtensions.cs" />
     <Compile Include="Extensions\RenderingExtensions.cs" />
     <Compile Include="Extensions\ItemExtensions.cs" />
-    <Compile Include="Extensions\HTMLHelperExtensions.cs" />
+    <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="JobsHelper.cs" />
     <Compile Include="Repositories\IRenderingPropertiesRepository.cs" />

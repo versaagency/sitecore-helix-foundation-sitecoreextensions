@@ -3,6 +3,8 @@ using System.Linq.Expressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
@@ -58,11 +60,6 @@ namespace Sitecore.Foundation.SitecoreExtensions.Extensions
         {
             var frame = new EditFrameRendering(helper.ViewContext.Writer, dataSource, buttons);
             return frame;
-        }
-
-        public static HtmlString DynamicPlaceholder(this SitecoreHelper helper, string placeholderName, bool useStaticPlaceholderNames = false)
-        {
-            return useStaticPlaceholderNames ? helper.Placeholder(placeholderName) : helper.DynamicPlaceholder(placeholderName);
         }
 
         public static HtmlString Field(this SitecoreHelper helper, ID fieldID)
@@ -127,6 +124,16 @@ namespace Sitecore.Foundation.SitecoreExtensions.Extensions
             var modelState = htmlHelper.ViewData.ModelState[modelName];
             var modelErrors = modelState?.Errors;
             return modelErrors?.Count > 0;
+        }
+
+        public static string JsonEncode(this SitecoreHelper helper, object obj)
+        {
+            var settings = new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
+            };
+
+            return JsonConvert.SerializeObject(obj, Formatting.Indented, settings);
         }
     }
 }
