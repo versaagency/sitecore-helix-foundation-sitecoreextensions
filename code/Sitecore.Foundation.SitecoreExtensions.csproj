@@ -34,6 +34,7 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Controls\EditFrameRendering.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
+    <Compile Include="Extensions\HttpContextExtensions.cs" />
     <Compile Include="Extensions\RenderingParameterExtensions.cs" />
     <Compile Include="Extensions\SessionExtensions.cs" />
     <Compile Include="Extensions\SiteExtensions.cs" />
