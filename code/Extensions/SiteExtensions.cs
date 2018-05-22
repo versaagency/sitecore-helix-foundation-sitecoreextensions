@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Sitecore.Data;
 using Sitecore.Data.Items;
@@ -8,6 +9,8 @@ namespace Sitecore.Foundation.SitecoreExtensions.Extensions
 {
     public static class SiteExtensions
     {
+        static readonly IEnumerable<string> _sitecoreSites = new[] { "shell", "login", "admin", "service", "modules_shell", "modules_website" };
+
         public static Item GetContextItem(this SiteContext site, ID derivedFromTemplateID)
         {
             if (site == null)
@@ -35,6 +38,8 @@ namespace Sitecore.Foundation.SitecoreExtensions.Extensions
 
         public static Web.SiteInfo GetSite(this Item item)
             => Configuration.Factory.GetSiteInfoList()
+                .Where(ent => !_sitecoreSites.Contains(ent.Name))
+                .Where(ent => !string.IsNullOrEmpty(ent.RootPath))
                 .FirstOrDefault(x => item.Paths.FullPath.StartsWith(x.RootPath));
     }
 }
