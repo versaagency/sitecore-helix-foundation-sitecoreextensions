@@ -10,6 +10,7 @@ using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using Sitecore.Foundation.SitecoreExtensions.Attributes;
 using Sitecore.Foundation.SitecoreExtensions.Controls;
+using Sitecore.Foundation.SitecoreExtensions.Helpers;
 using Sitecore.Mvc;
 using Sitecore.Mvc.Helpers;
 
@@ -135,5 +136,8 @@ namespace Sitecore.Foundation.SitecoreExtensions.Extensions
 
             return JsonConvert.SerializeObject(obj, Formatting.Indented, settings);
         }
+
+        public static string CacheBust(this HtmlHelper helper, string path)
+            => CacheBuster.Bust(path);
     }
 }
