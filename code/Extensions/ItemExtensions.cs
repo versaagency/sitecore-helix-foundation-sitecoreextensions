@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -59,7 +59,37 @@ namespace Sitecore.Foundation.SitecoreExtensions.Extensions
                 throw new ArgumentNullException(nameof(mediaItem));
             }
 
-            var options = new MediaUrlOptions { Height = height, Width = width };
+            return mediaItem.ImageUrl(new MediaUrlOptions { Height = height, Width = width });
+        }
+
+        public static string ImageUrl(this Item item, MediaUrlOptions options)
+        {
+            if (item == null)
+            {
+                throw new ArgumentNullException(nameof(item));
+            }
+
+            if (options == null)
+            {
+                throw new ArgumentNullException(nameof(options));
+            }
+
+            var mediaItem = new MediaItem(item);
+            return ImageUrl(mediaItem, options);
+        }
+
+        public static string ImageUrl(this MediaItem mediaItem, MediaUrlOptions options)
+        {
+            if (mediaItem == null)
+            {
+                throw new ArgumentNullException(nameof(mediaItem));
+            }
+
+            if (options == null)
+            {
+                throw new ArgumentNullException(nameof(options));
+            }
+
             var url = MediaManager.GetMediaUrl(mediaItem, options);
             var cleanUrl = StringUtil.EnsurePrefix('/', url);
             var hashedUrl = HashingUtils.ProtectAssetUrl(cleanUrl);
