@@ -91,7 +91,7 @@ namespace Sitecore.Foundation.SitecoreExtensions.Extensions
             }
 
             var url = MediaManager.GetMediaUrl(mediaItem, options);
-            var cleanUrl = StringUtil.EnsurePrefix('/', url);
+            var cleanUrl = options.AlwaysIncludeServerUrl ? url : StringUtil.EnsurePrefix('/', url);
             var hashedUrl = HashingUtils.ProtectAssetUrl(cleanUrl);
 
             return hashedUrl;
