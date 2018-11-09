@@ -53,5 +53,12 @@ namespace Sitecore.Foundation.SitecoreExtensions.Extensions
         {
             return !string.IsNullOrEmpty(value) ? value.Split(new string[] { separator }, StringSplitOptions.RemoveEmptyEntries) : Enumerable.Empty<string>();
         }
+
+        public static string Truncate(this string value, int maxLength)
+        {
+            if (string.IsNullOrEmpty(value))
+                return value;
+            return value.Length <= maxLength ? value : value.Substring(0, maxLength) + "...";
+        }
     }
 }
