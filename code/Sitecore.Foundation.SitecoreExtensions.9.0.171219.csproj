@@ -44,6 +44,7 @@
     <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Helpers\CacheBuster.cs" />
+    <Compile Include="Helpers\CustomHtmlHelper.cs" />
     <Compile Include="JobsHelper.cs" />
     <Compile Include="Repositories\IRenderingPropertiesRepository.cs" />
     <Compile Include="Repositories\RenderingPropertiesRepository.cs" />
