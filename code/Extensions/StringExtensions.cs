@@ -1,4 +1,7 @@
-﻿using System.Text.RegularExpressions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Sitecore.Foundation.SitecoreExtensions.Extensions
 {
@@ -44,6 +47,11 @@ namespace Sitecore.Foundation.SitecoreExtensions.Extensions
 
             var base64EncodedBytes = System.Convert.FromBase64String(encodedText);
             return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
+        }
+
+        public static IEnumerable<string> AsSplitList(this string value, string separator = ",")
+        {
+            return !string.IsNullOrEmpty(value) ? value.Split(new string[] { separator }, StringSplitOptions.RemoveEmptyEntries) : Enumerable.Empty<string>();
         }
     }
 }
