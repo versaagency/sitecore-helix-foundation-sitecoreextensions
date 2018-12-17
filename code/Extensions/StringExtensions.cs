@@ -60,5 +60,27 @@ namespace Sitecore.Foundation.SitecoreExtensions.Extensions
                 return value;
             return value.Length <= maxLength ? value : value.Substring(0, maxLength) + "...";
         }
+
+        /// <summary>
+        /// Returns the provided default value if the string is null or empty
+        /// </summary>
+        /// <param name="value">The value to be tested for being null or empty</param>
+        /// <param name="defaultValue">The default value</param>
+        /// <returns>Returns defaultValue if value is null or empty; otherwise value</returns>
+        public static string DefaultIfNullOrEmpty(this string value, string defaultValue)
+        {
+            return !string.IsNullOrEmpty(value) ? value : defaultValue;
+        }
+
+        /// <summary>
+        /// Returns the provided default value if the string is null, empty or whitespace
+        /// </summary>
+        /// <param name="value">The value to be tested for being null, empty or whitespace</param>
+        /// <param name="defaultValue">The default value</param>
+        /// <returns>Returns defaultValue if value is null, empty or whitespace; otherwise value</returns>
+        public static string DefaultIfNullOrWhitespace(this string value, string defaultValue)
+        {
+            return !string.IsNullOrWhiteSpace(value) ? value : defaultValue;
+        }
     }
 }
