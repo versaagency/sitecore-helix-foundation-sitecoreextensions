@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B535703F-8D07-4F23-A533-2974BB4CC7B1}</ProjectGuid>
+    <ProjectGuid>{0CF9625C-1149-4F23-AB6A-D64CEEC49D56}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Sitecore.Foundation.SitecoreExtensions</RootNamespace>
