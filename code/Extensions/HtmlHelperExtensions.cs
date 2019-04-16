@@ -134,7 +134,7 @@ namespace Sitecore.Foundation.SitecoreExtensions.Extensions
                 ContractResolver = new CamelCasePropertyNamesContractResolver()
             };
 
-            return JsonConvert.SerializeObject(obj, Formatting.Indented, settings);
+            return JsonConvert.SerializeObject(obj, Formatting.None, settings);
         }
 
         public static string CacheBust(this HtmlHelper helper, string path)
