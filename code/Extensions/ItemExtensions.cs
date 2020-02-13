@@ -230,7 +230,16 @@ namespace Sitecore.Foundation.SitecoreExtensions.Extensions
 
         public static bool HasLayout(this Item item)
         {
-            return item?.Visualization?.Layout != null;
+            try
+            {
+                return item?.Visualization?.Layout != null;
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"HasLayout on item '{item.ID.Guid}' failed.", ex, typeof(ItemExtensions));
+
+                return false;
+            }
         }
 
         public static bool IsDerived(this Item item, ID templateId)
